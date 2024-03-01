@@ -113,7 +113,7 @@ const Home = () => {
   <div className="testimonials-grid">
     <div className="testimonial">
       {/* Embed Facebook video */}
-      <iframe src="https://www.facebook.com/facebook/videos/10153231379946729/" width="300" height="315" allowfullscreen></iframe>
+      <iframe width="300" height="315" src="https://www.youtube.com/embed/OlITy4J3ee4" frameborder="0" allowfullscreen></iframe>
       <p>"I found my soulmate on this app. Thank you!"</p>
       <cite>- John Doe</cite>
     </div>
@@ -140,7 +140,7 @@ const Home = () => {
         <div className="cta-content">
           <h2>Ready to Find Love?</h2>
           <p>Join thousands of happy couples who found love on our dating app.</p>
-          <Link to="/register" className="cta-button">Sign Up Now</Link>
+          <Link to="/user-profiles" className="cta-button">Join Now</Link>
         </div>
       </section>
 

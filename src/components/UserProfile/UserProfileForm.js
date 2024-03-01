@@ -87,7 +87,7 @@ const UserProfileForm = ({ authenticatedUser, profileOwner }) => {
 
   const fetchProfile = async (email) => {
     try {
-      return await fetch(`http://localhost:3000/api/user-profile/${email}`);
+      return await fetch(`https://dndtv-dating-app-api-3.onrender.com/api/user-profile/${email}`);
     } catch (error) {
       console.error('Error fetching profile:', error);
       throw error;

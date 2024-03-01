@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const UserProfilesPage = () => {
     const [users, setUsers] = useState([]);
     const [profiles, setProfiles] = useState([]);
-    const baseURL = 'http://localhost:3000/api';
+    const baseURL = 'https://dndtv-dating-app-api-3.onrender.com/api';
     
     const fetchUsers = async () => {
         try {
