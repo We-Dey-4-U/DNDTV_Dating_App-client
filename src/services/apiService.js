@@ -1,7 +1,7 @@
 // /frontend/src/services/apiService.js
 
 import axios from 'axios';
-const baseURL = 'http://https://dndtv-dating-app-api-jig4.vercel.app//api'; 
+const baseURL = 'https://dndtv-dating-app-api-jig4.vercel.app/api'; 
 //const baseURL = 'http://localhost:3000/api'; // Assuming your backend API is running on port 3000
 
 const apiService = axios.create({
