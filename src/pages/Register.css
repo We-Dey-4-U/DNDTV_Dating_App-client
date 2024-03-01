@@ -1,0 +1,20 @@
+/* Register.css */
+
+.register-container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .link-container {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .login-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .login-link:hover {
+    text-decoration: underline;
+  }

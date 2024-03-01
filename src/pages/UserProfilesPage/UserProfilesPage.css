@@ -1,0 +1,252 @@
+/* Home.css */
+
+/* General Styles */
+/* Navbar styles */
+.navbar {
+    position: fixed;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px; /* Reduce padding */
+    z-index: 1000; /* Ensure it stays on top */
+    top: 0; /* Stick to the top */
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    font-size: 20px;
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-links li {
+    margin-right: 20px;
+  }
+  
+  .navbar-links li:last-child {
+    margin-right: 0;
+  }
+  
+  .navbar-links a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-links a:hover {
+    color: #FF6347;
+  }
+  
+  .navbar-links-right {
+    margin-left: auto;
+    margin-right: 50px;
+  }
+  /* Hero Section */
+  .homepage {
+    background-image: "";
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+  }
+
+  .hero-section {
+    height: 500px; /* Adjust as needed */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000;
+    padding-top: 70px;
+  }
+
+ 
+  
+  .hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+
+
+
+/* User Profiles Section */
+.user-profiles-section {
+    padding: 100px 0;
+    text-align: center;
+  }
+  
+  .user-profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    justify-content: center;
+  }
+  
+  .user-profile {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Add smooth transition */
+  }
+  
+  .user-profile:hover {
+    transform: scale(1.05); /* Increase size on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .user-profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  
+  .user-details {
+    text-align: left;
+  }
+  
+  .user-details h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .user-details p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .profile-link:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 100px 0;
+    text-align: center;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    justify-content: center;
+  }
+  
+  .feature {
+    text-align: left;
+  }
+  
+  .feature h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .feature p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+
+  /* CTA Section */
+  .cta-section {
+    background-color: #007bff;
+    color: #fff;
+    padding: 150px 0;
+    text-align: center;
+  }
+  
+  .cta-content h2 {
+    font-size: 48px;
+    margin-bottom: 30px;
+  }
+  
+  .cta-content p {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+
+
+
+
+  blog-section {
+    padding: 50px 0;
+  }
+  
+  .blog-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .blog-post {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .blog-post h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .blog-post img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .blog-post p {
+    margin-bottom: 10px;
+  }
+  
+  .blog-post video {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+
+  /* Mobile responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+      padding: 10px; /* Adjust padding */
+    }
+    
+    .navbar-links-right {
+      display: none; /* Hide right links on smaller screens */
+    }
+  }

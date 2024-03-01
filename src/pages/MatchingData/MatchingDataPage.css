@@ -1,0 +1,96 @@
+.matching-data-section {
+    padding: 20px;
+  }
+  
+  .match-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .match-item p {
+    margin: 5px 0;
+  }
+  
+  .match-item p:nth-child(even) {
+    font-weight: bold;
+  }
+  
+  .match-item p:first-child {
+    color: #007bff; /* User ID 1 */
+  }
+  
+  .match-item p:nth-child(2) {
+    color: #28a745; /* User ID 2 */
+  }
+  
+  .match-item p:nth-child(3) {
+    color: #6c757d; /* User 1 Username */
+  }
+  
+  .match-item p:nth-child(4) {
+    color: #6c757d; /* User 2 Username */
+  }
+  
+  .match-item p:last-child {
+    color: #dc3545; /* Matched At */
+  }
+
+
+
+
+  .h2-with-background {
+    background-image: url('https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/429897688_1911939569237313_3565053801087567742_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=3635dc&_nc_ohc=Mej5ubQ07soAX8M-DZx&_nc_ht=scontent-los2-1.xx&oh=00_AfAa_IvVOj2YGWfoGkjROA81hW81l4jOojiya2Wk4sLKjA&oe=65E470F6');
+    background-size: cover;
+   
+}
+
+
+/* Media query for small devices (phones) */
+@media only screen and (max-width: 600px) {
+    .h2-with-background {
+      height: 300px; /* Height for small devices */
+    }
+  }
+  
+  /* Media query for medium devices (tablets) */
+  @media only screen and (min-width: 601px) and (max-width: 992px) {
+    .h2-with-background {
+      height: 900px; /* Height for medium devices */
+    }
+  }
+  
+  /* Media query for large devices (desktops and laptops) */
+  @media only screen and (min-width: 993px) {
+    .h2-with-background {
+      height: 900px; /* Height for large devices (computers) */
+    }
+  }
+
+
+
+  .return-home {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .return-home a {
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .return-home a:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .return-home a::after {
+    content: '\2190'; /* Unicode arrow character */
+    margin-left: 5px;
+  }
