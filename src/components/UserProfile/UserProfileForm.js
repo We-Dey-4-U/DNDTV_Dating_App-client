@@ -112,7 +112,6 @@ const UserProfileForm = ({ authenticatedUser }) => {
   );
 };
 
-
 const styles = {
   container: {
     maxWidth: '600px',

@@ -1,43 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './UserProfile.css'; // Import CSS file for styling
+import './UserProfile.css';
 
 const UserProfile = () => {
     const { profile_id } = useParams();
     const [profileData, setProfileData] = useState(null);
-    const baseURL = 'http://localhost:3000/api/user-profile';
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const baseURL = 'http://localhost:3000/api';
 
     useEffect(() => {
         const fetchProfileData = async () => {
             try {
-                const response = await fetch(`${baseURL}/profile/${profile_id}`);
+                const response = await fetch(`${baseURL}/user-profile/profile/${profile_id}`);
                 if (response.ok) {
                     const data = await response.json();
                     setProfileData(data);
                 } else {
-                    console.error('Failed to fetch profile data');
+                    setError('Failed to fetch profile data');
                 }
             } catch (error) {
-                console.error('Error fetching profile data:', error);
+                setError('Error fetching profile data');
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchProfileData();
     }, [profile_id]);
 
-    if (!profileData) {
+    if (loading) {
         return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
+    if (!profileData) {
+        return <div>No profile data found.</div>;
     }
 
     return (
         <div className="user-profile-container">
-            <h2 className="profile-heading">{profileData.User.username}'s Profile</h2>
+            <h2 className="profile-heading">{profileData.username}'s Profile</h2>
             <div className="profile-details">
-                <p><strong>Email:</strong> {profileData.User.email}</p>
-                <p><strong>Hobbies:</strong> {profileData.hobbies || 'Not specified'}</p>
+                <p><strong>Email:</strong> {profileData.email}</p>
+                <p><strong>Gender:</strong> {profileData.gender}</p>
                 <p><strong>Interests:</strong> {profileData.interests || 'Not specified'}</p>
-                <p><strong>Gender:</strong> {profileData.User.gender}</p>
-                {/* Add more profile details as needed */}
+                <p><strong>Hobbies:</strong> {profileData.hobbies || 'Not specified'}</p>
+                <p><strong>Privacy Setting:</strong> {profileData.privacy_setting}</p>
+                <p><strong>Birthdate:</strong> {profileData.birthdate}</p>
+                <p><strong>Location:</strong> {profileData.location}</p>
+                <p><strong>Bio:</strong> {profileData.bio}</p>
             </div>
         </div>
     );
