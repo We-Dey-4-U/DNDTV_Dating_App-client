@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { createProfile, getUserProfile, updateProfile } from '../../services/apiService';
-
+import React, { useState } from 'react';
+import { createProfile } from '../../services/apiService';
 import { useNavigate } from 'react-router-dom';
 
 const UserProfileForm = ({ authenticatedUser }) => {
@@ -9,20 +8,37 @@ const UserProfileForm = ({ authenticatedUser }) => {
     profile_picture: null,
     interests: '',
     hobbies: '',
-    privacy_setting: 'public',
-    profilePicturePreview: localStorage.getItem('profile_picture') || null,
   });
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    // Handle form data changes...
+    const { name, value, files } = e.target;
+    if (name === 'profile_picture') {
+      const profilePicture = files ? files[0] : null;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: profilePicture,
+      }));
+      // Preview profile picture
+      if (profilePicture) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setFormData((prevData) => ({
+            ...prevData,
+            profilePicturePreview: reader.result,
+          }));
+        };
+        reader.readAsDataURL(profilePicture);
+      }
+    } else {
+      setFormData((prevData) => ({ ...prevData, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Submit form data...
       const createResponse = await createProfile(formData);
       if (createResponse.status === 'success') {
         // Redirect to the unique profile page upon successful profile creation
@@ -32,18 +48,11 @@ const UserProfileForm = ({ authenticatedUser }) => {
       }
     } catch (error) {
       console.error('Error:', error);
-      // Handle error
     }
   };
 
-
-
-
-
-
   return (
     <div>
-      
       <div style={styles.container}>
         <h2 style={styles.title}>User Profile Form</h2>
         <div style={styles.previewContainer}>
@@ -54,12 +63,7 @@ const UserProfileForm = ({ authenticatedUser }) => {
         <form onSubmit={handleSubmit} style={styles.form}>
           <div style={styles.field}>
             <label style={styles.label}>Profile Picture:</label>
-            <input
-              type="file"
-              name="profile_picture"
-              onChange={handleChange}
-              style={styles.input}
-            />
+            <input type="file" name="profile_picture" onChange={handleChange} style={styles.input} />
           </div>
           <div style={styles.field}>
             <label style={styles.label}>Email:</label>
@@ -67,7 +71,7 @@ const UserProfileForm = ({ authenticatedUser }) => {
               type="text"
               name="email"
               value={formData.email}
-              onChange={handleChange} // Add onChange handler to make email field editable
+              onChange={handleChange}
               style={styles.input}
             />
           </div>
@@ -107,6 +111,7 @@ const UserProfileForm = ({ authenticatedUser }) => {
     </div>
   );
 };
+
 
 const styles = {
   container: {
