@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { createProfile, getUserProfile, updateProfile } from '../../services/apiService';
-import io from 'socket.io-client';
+
 import { useNavigate } from 'react-router-dom';
 
-const UserProfileForm = ({ authenticatedUser, profileOwner }) => {
+const UserProfileForm = ({ authenticatedUser }) => {
   const [formData, setFormData] = useState({
     email: authenticatedUser ? authenticatedUser.email : '',
     profile_picture: null,
@@ -12,88 +12,29 @@ const UserProfileForm = ({ authenticatedUser, profileOwner }) => {
     privacy_setting: 'public',
     profilePicturePreview: localStorage.getItem('profile_picture') || null,
   });
-  const [messages, setMessages] = useState([]);
-  const [replyMessage, setReplyMessage] = useState('');
-  const [warningMessage, setWarningMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const socket = io('http://localhost:3001');
+
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchProfileData = async () => {
-      try {
-        if (profileOwner && profileOwner.email) {
-          const profileData = await getUserProfile(profileOwner.email);
-          setFormData(profileData);
-        }
-      } catch (error) {
-        console.error('Error fetching profile data:', error);
-      }
-    };
-    fetchProfileData();
-
-    socket.on('receive_message', (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
-    });
-
-    return () => {
-      socket.off('receive_message');
-    };
-  }, [profileOwner, socket]);
-
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === 'profile_picture') {
-      const profilePicture = files ? files[0] : null;
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: profilePicture,
-        profilePicturePreview: profilePicture ? URL.createObjectURL(profilePicture) : null,
-      }));
-    } else {
-      setFormData((prevData) => ({ ...prevData, [name]: value }));
-    }
+    // Handle form data changes...
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetchProfile(formData.email);
-      if (response.ok) {
-        const profileExists = await response.json();
-        if (profileExists) {
-          setWarningMessage('A profile with this email already exists');
-          setSuccessMessage('');
-          return;
-        }
-      } else {
-        console.error('Failed to check profile existence');
-      }
-
+      // Submit form data...
       const createResponse = await createProfile(formData);
       if (createResponse.status === 'success') {
-        setSuccessMessage('Profile created successfully');
-        setWarningMessage('');
-        navigate('/user-profiles'); // Ensure that navigate is imported correctly and used within a Router component
+        // Redirect to the unique profile page upon successful profile creation
+        navigate(`/profile/${createResponse.profile_id}`);
       } else {
         console.error('Failed to create profile:', createResponse.error);
-        setSuccessMessage('');
       }
     } catch (error) {
       console.error('Error:', error);
       // Handle error
     }
   };
-
-  const fetchProfile = async (email) => {
-    try {
-      return await fetch(`https://dndtv-dating-app-api-3.onrender.com/api/user-profile/${email}`);
-    } catch (error) {
-      console.error('Error fetching profile:', error);
-      throw error;
-    }
-  };
-
 
 
 
@@ -102,8 +43,7 @@ const UserProfileForm = ({ authenticatedUser, profileOwner }) => {
 
   return (
     <div>
-      {warningMessage && <div className="warning-message">{warningMessage}</div>}
-      {successMessage && <div className="success-message">{successMessage}</div>}
+      
       <div style={styles.container}>
         <h2 style={styles.title}>User Profile Form</h2>
         <div style={styles.previewContainer}>

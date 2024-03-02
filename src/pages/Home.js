@@ -139,8 +139,8 @@ const Home = () => {
       <section className="cta-section" style={{backgroundImage: `url('https://i.pinimg.com/474x/16/40/b7/1640b7d3abcff711b3807a5aa8f0a49d.jpg')`}}>
         <div className="cta-content">
           <h2>Ready to Find Love?</h2>
-          <p>Join thousands of happy couples who found love on our dating app.</p>
-          <Link to="/user-profiles" className="cta-button">Join Now</Link>
+          <p>Discover Your Soulmate Today!</p>
+          <Link to="/user-profiles" className="cta-button">Meet Your Soulmate</Link>
         </div>
       </section>
 

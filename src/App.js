@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import UserProfile from './pages/UserProfile';
+import UserProfile from './pages/UserProfile/UserProfile';
 import UserProfilesPage from './pages/UserProfilesPage/UserProfilesPage';
 import UserProfileForm from './components/UserProfile/UserProfileForm'; // Import UserProfileForm component
 import MatchingDataPage from './pages/MatchingData/MatchingDataPage';
