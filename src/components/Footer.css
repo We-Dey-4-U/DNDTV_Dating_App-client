@@ -1,0 +1,28 @@
+/* components/Footer.css */
+
+.footer-container {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    margin-bottom: 20px;
+}
+
+.social-media {
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px; /* Increase margin for more space between icons */
+    font-size: 24px; /* Increase icon size */
+}
+
+.social-icons a:hover {
+    color: #FF6347;
+    transform: scale(1.1); /* Add a slight scale effect on hover */
+}

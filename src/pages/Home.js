@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'; // Import Axios for making HTTP requests
+import Footer from '../components/Footer'; // Import the Footer component
 //import UserProfilesPage from '../page/UserProfilesPage/UserProfilesPage'; // Import the UserProfilesPage component
 
 
@@ -9,6 +10,8 @@ import './Home.css'; // Import CSS file for styling
 const Home = () => {
    // const [users, setUsers] = useState([]);
     const [news, setNews] = useState([]);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     //const baseURL = 'http://localhost:3000/api';
     
    
@@ -36,6 +39,12 @@ const Home = () => {
         
        
     }, []);
+
+    const toggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen);
+  };
+
+ 
   
     
     
@@ -46,19 +55,42 @@ const Home = () => {
 
       {/* Navbar */}
       <nav className="navbar">
-        <div className="navbar-container">
-          <h1 className="navbar-logo">Dukes$Dutches</h1>
-          <ul className="navbar-links">
+    <div className="navbar-container">
+        <h1 className="navbar-logo">Dukes$Dutches</h1>
+        {/* Mobile menu icon */}
+        <div className="navbar-mobile-icon" onClick={toggleMenu}>
+            <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
+        </div>
+        {/* Regular links for desktop */}
+        <ul className="navbar-links">
             <li><Link to="/">Home</Link></li>
-            {/* Add other navbar links here */}
-          </ul>
-          <ul className="navbar-links navbar-links-right">
+            <li><Link to="/relationship-tips">Relationship-tips</Link></li>
+        </ul>
+        {/* Right-aligned links for desktop */}
+        <ul className="navbar-links navbar-links-right">
             <li><Link to="/register">Register</Link></li>
             <li><Link to="/login">Login</Link></li>
-          </ul>
-        </div>
-      </nav>
+        </ul>
+    </div>
+</nav>
 
+{/* Mobile Menu Dropdown */}
+<div className={`navbar-links-mobile ${isMenuOpen ? 'open' : ''}`}>
+    <button className="menu-button" onClick={toggleMenu}>Menu</button>
+    <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/register">Register</Link></li>
+        <li><Link to="/login">Login</Link></li>
+    </ul>
+</div> 
+     
+     
+     
+     
+     
+     
+     
+     
       {/* Hero Section */}
       <section className="hero-section" style={{backgroundImage: `url('https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/424972151_1581326085984637_4511065845559482280_n.jpg?stp=dst-jpg_p526x296&_nc_cat=102&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=lmY-M5Qvfa8AX8te8fB&_nc_ht=scontent-los2-1.xx&oh=00_AfDah9GF_YrMkZLIoimOAhbL5U4VbnKGF1Qk1LWjNIPLhg&oe=65E19C27')`}}>
       <div className="hero-content">
@@ -108,30 +140,29 @@ const Home = () => {
 
 
      {/* Testimonial Section */}
-<section className="testimonial-section">
+     <section className="testimonial-section">
   <h2>Success Stories</h2>
   <div className="testimonials-grid">
     <div className="testimonial">
       {/* Embed Facebook video */}
-      <iframe width="300" height="315" src="https://www.youtube.com/embed/OlITy4J3ee4" frameborder="0" allowfullscreen></iframe>
+      <iframe width="300" height="315" src="https://www.youtube.com/embed/OlITy4J3ee4" frameBorder="0" allowFullScreen></iframe>
       <p>"I found my soulmate on this app. Thank you!"</p>
       <cite>- John Doe</cite>
     </div>
     <div className="testimonial">
       {/* Embed Instagram video */}
-      <iframe src="https://www.instagram.com/p/CIumZf8Hrpf/embed/" width="300" height="315" allowfullscreen></iframe>
+      <iframe src="https://www.instagram.com/p/CIumZf8Hrpf/embed/" width="300" height="315" allowFullScreen></iframe>
       <p>"Best dating app ever! Highly recommended."</p>
       <cite>- Jane Smith</cite>
     </div>
     <div className="testimonial">
       {/* Embed YouTube video */}
-      <iframe width="300" height="315" src="https://www.youtube.com/embed/OlITy4J3ee4" frameborder="0" allowfullscreen></iframe>
+      <iframe width="300" height="315" src="https://www.youtube.com/embed/OlITy4J3ee4" frameBorder="0" allowFullScreen></iframe>
       <p>"Amazing experience using this app!"</p>
       <cite>- Alex Johnson</cite>
     </div>
   </div>
 </section>
-
       
 
       
@@ -143,6 +174,14 @@ const Home = () => {
           <Link to="/user-profiles" className="cta-button">Meet Your Soulmate</Link>
         </div>
       </section>
+
+       {/* Video Gallery Section */}
+       <h2>Event Video Gallery</h2>
+       <section className="video-gallery-section" style={{backgroundImage: `url('https://scontent-los2-1.xx.fbcdn.net/v/t1.6435-9/31253116_10209418842387791_184213204614774784_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=dd63ad&_nc_ohc=5UexziSQxQ4AX-H6vwa&_nc_ht=scontent-los2-1.xx&oh=00_AfC5pdovjGFdj2laKV0gmfEbdq1OwJrrK4nNb9Xf6nU9Tg&oe=660C9BC4')`}}>
+                
+                <Link to="/event-video-gallery" className="cta-button">Go to Video Gallery</Link>
+            </section>
+     
 
 
      {/* Blog Section */}
@@ -167,7 +206,9 @@ const Home = () => {
         ))}
     </div>
 </section>
-
+    
+      {/* Include the Footer component */}
+      <Footer />
     </div>
   );
 };

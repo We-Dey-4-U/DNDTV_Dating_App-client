@@ -7,6 +7,9 @@ import UserProfile from './pages/UserProfile/UserProfile';
 import UserProfilesPage from './pages/UserProfilesPage/UserProfilesPage';
 import UserProfileForm from './components/UserProfile/UserProfileForm'; // Import UserProfileForm component
 import MatchingDataPage from './pages/MatchingData/MatchingDataPage';
+import EventVideoGalleryPage from './pages/EventVideoGalleryPage';
+import RelationshipTipsPage from './pages/RelationshipTipsPage';
+
 
 
 const App = () => {
@@ -21,6 +24,9 @@ const App = () => {
           <Route path="/user-profiles" element={<UserProfilesPage/>} />
           <Route path="/user-profile" element={<UserProfileForm />} /> {/* Update route to point to UserProfileForm */}
           <Route path="/matching-data" element={< MatchingDataPage />} />
+          <Route path="/event-video-gallery" element={<EventVideoGalleryPage />} />
+          <Route path="/relationship-tips" element={<RelationshipTipsPage />} />
+         
           
         </Routes>
       </div>

@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import { createProfile } from '../../services/apiService';
 import { useNavigate } from 'react-router-dom';
+//import { useHistory } from 'react-router-dom'; // Import useHistory hook
 
-const UserProfileForm = ({ authenticatedUser }) => {
+const UserProfileForm = () => {
   const [formData, setFormData] = useState({
-    email: authenticatedUser ? authenticatedUser.email : '',
+    user_id: "", // Add user_id field
+    email: 'codecraft@example',
+    interests: 'Programming, Reading',
+    hobbies: 'Playing guitar, Hiking',
+    privacy_setting: 'public',
+    username: 'iyke',
+    gender: 'female',
+    birthdate: '1996-01-01',
+    location: 'london',
+    bio: "Hello, I'm iyke!",
     profile_picture: null,
-    interests: '',
-    hobbies: '',
   });
 
   const navigate = useNavigate();
+  //const history = useHistory(); // Initialize useHistory hook
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -36,20 +45,32 @@ const UserProfileForm = ({ authenticatedUser }) => {
     }
   };
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (!formData.username) {
+        console.error('Username is required');
+        return;
+      }
+      
       const createResponse = await createProfile(formData);
-      if (createResponse.status === 'success') {
-        // Redirect to the unique profile page upon successful profile creation
+      if (createResponse.profile_id) { // Check if profile_id exists
         navigate(`/profile/${createResponse.profile_id}`);
       } else {
-        console.error('Failed to create profile:', createResponse.error);
+        console.error('Profile ID not found in the response');
       }
     } catch (error) {
       console.error('Error:', error);
     }
   };
+
+ 
+
+
+
+
 
   return (
     <div>
@@ -61,9 +82,29 @@ const UserProfileForm = ({ authenticatedUser }) => {
           )}
         </div>
         <form onSubmit={handleSubmit} style={styles.form}>
+        <div style={styles.field}>
+          <label style={styles.label}>User ID:</label>
+          <input
+            type="text"
+            name="user_id"
+            value={formData.user_id}
+            onChange={handleChange}
+            style={styles.input}
+          />
+        </div>
           <div style={styles.field}>
             <label style={styles.label}>Profile Picture:</label>
             <input type="file" name="profile_picture" onChange={handleChange} style={styles.input} />
+          </div>
+          <div style={styles.field}>
+            <label style={styles.label}>Username:</label>
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              style={styles.input}
+            />
           </div>
           <div style={styles.field}>
             <label style={styles.label}>Email:</label>
@@ -95,6 +136,26 @@ const UserProfileForm = ({ authenticatedUser }) => {
               style={styles.input}
             />
           </div>
+          <div style={styles.field}>
+            <label style={styles.label}>Gender:</label>
+            <select name="gender" value={formData.gender} onChange={handleChange} style={styles.input}>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div style={styles.field}>
+            <label style={styles.label}>Birthdate:</label>
+            <input type="date" name="birthdate" value={formData.birthdate} onChange={handleChange} style={styles.input} />
+          </div>
+          <div style={styles.field}>
+            <label style={styles.label}>Location:</label>
+            <input type="text" name="location" value={formData.location} onChange={handleChange} style={styles.input} />
+          </div>
+          <div style={styles.field}>
+            <label style={styles.label}>Bio:</label>
+            <textarea name="bio" value={formData.bio} onChange={handleChange} style={styles.input} />
+          </div>
           <button type="submit" style={styles.button}>
             Save Profile
           </button>
@@ -103,14 +164,13 @@ const UserProfileForm = ({ authenticatedUser }) => {
       <div style={styles.userDetailsContainer}>
         <h2 style={styles.title}>User Details</h2>
         <div style={styles.userDetails}>
-          <p><strong>Email:</strong> {formData.email}</p>
-          <p><strong>Interests:</strong> {formData.interests}</p>
-          <p><strong>Hobbies:</strong> {formData.hobbies}</p>
+          {/* Display user details */}
         </div>
       </div>
     </div>
   );
 };
+
 
 const styles = {
   container: {

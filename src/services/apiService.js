@@ -238,6 +238,36 @@ export const fetchNews = async () => {
     }
   };
 
+  export const getVideos = async () => {
+    try {
+        // Make HTTP request to fetch videos
+        const response = await axios.get('/api/videos');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching videos:', error);
+        throw error;
+    }
+};
+
+
+// Function to upload video file to the backend server
+export const uploadVideo = async (videoFile) => {
+  try {
+    const formData = new FormData();
+    formData.append('video', videoFile);
+    const response = await axios.post('/api/videos/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data; // Assuming the backend returns some data after successful upload
+  } catch (error) {
+    throw error;
+  }
+};
+
+
+
 
 
 

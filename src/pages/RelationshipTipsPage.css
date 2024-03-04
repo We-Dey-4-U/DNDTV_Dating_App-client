@@ -1,0 +1,45 @@
+/* RelationshipTipsPage.css */
+
+/* Container Styles */
+.relationship-tips-container {
+    background-color: #f7f7f7; /* Background color covering the entire page */
+    padding: 50px; /* Add padding for better readability */
+  }
+  
+  /* Title Styles */
+  .relationship-tips-container h2 {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  /* Tip Styles */
+  .tips-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .tip {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tip h3 {
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .tip p {
+    font-size: 18px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .tip h3:hover {
+    color: #FF6347; /* Change color on hover */
+  }
