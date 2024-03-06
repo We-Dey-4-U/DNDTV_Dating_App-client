@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
@@ -13,14 +13,15 @@ import RelationshipTipsPage from './pages/RelationshipTipsPage';
 
 
 const App = () => {
+  const [authenticated, setAuthenticated] = useState(false);
   return (
     <Router>
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile/:profile_id" element={<UserProfile />} /> {/* UserProfile route */}
+          <Route path="/login" element={<Login setAuthenticated={setAuthenticated} />} />
+          <Route path="/profile/:profile_id" element={<UserProfile isAuthenticated={authenticated} />} />
           <Route path="/user-profiles" element={<UserProfilesPage/>} />
           <Route path="/user-profile" element={<UserProfileForm />} /> {/* Update route to point to UserProfileForm */}
           <Route path="/matching-data" element={< MatchingDataPage />} />

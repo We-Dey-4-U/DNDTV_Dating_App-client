@@ -50,22 +50,22 @@ const UserProfileForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!formData.username) {
-        console.error('Username is required');
-        return;
-      }
-      
-      const createResponse = await createProfile(formData);
-      if (createResponse.profile_id) { // Check if profile_id exists
-        navigate(`/profile/${createResponse.profile_id}`);
-      } else {
-        console.error('Profile ID not found in the response');
-      }
+        if (!formData.username) {
+            console.error('Username is required');
+            return;
+        }
+        
+        const createResponse = await createProfile(formData);
+        if (createResponse.profile_id) { // Check if profile_id exists
+            // Redirect to the created profile page
+            navigate(`/profile/${createResponse.profile_id}`);
+        } else {
+            console.error('Profile ID not found in the response');
+        }
     } catch (error) {
-      console.error('Error:', error);
+        console.error('Error:', error);
     }
-  };
-
+};
  
 
 

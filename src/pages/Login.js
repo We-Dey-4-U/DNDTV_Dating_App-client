@@ -4,18 +4,24 @@ import AuthForm from '../components/AuthForm';
 import { loginUser } from '../services/apiService';
 import './Login.css';
 
-const Login = () => {
+const Login = ({ setAuthenticated }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (formData) => {
     try {
-      const response = await loginUser(formData); // Pass email and password directly
-      console.log('Login successful:', response);
-      navigate('/');
+      const { email, password } = formData;
+      const token = await loginUser(email, password);
+      if (token) {
+        localStorage.setItem('token', token); // Store token in local storage
+        setAuthenticated(true); // Update authentication state
+        navigate('/'); // Redirect to homepage
+      } else {
+        setErrorMessage('Failed to login. Please check your credentials.');
+      }
     } catch (error) {
       console.error('Error logging in:', error);
-      setErrorMessage('Failed to login. Please check your credentials.');
+      setErrorMessage('Failed to login. Please try again later.');
     }
   };
 

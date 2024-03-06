@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 const UserProfilesPage = () => {
     const [profiles, setProfiles] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false); // Add state for authentication
+    const [hasProfile, setHasProfile] = useState(false); // Add state for profile creation
     const baseURL = 'http://localhost:3000/api';
 
     useEffect(() => {
@@ -22,6 +24,10 @@ const UserProfilesPage = () => {
                 setLoading(false);
             }
         };
+
+         // Simulate authentication and profile creation status
+         setIsAuthenticated(true); // Set to true if user is authenticated
+         setHasProfile(true); // Set to true if user has created their profile
 
         fetchProfiles();
     }, []);
@@ -48,7 +54,11 @@ const UserProfilesPage = () => {
                                 {/* Display hobbies and interests */}
                                 <p>Hobbies: {profile.hobbies || 'Not specified'}</p>
                                 <p>Interests: {profile.interests || 'Not specified'}</p>
-                                <Link to={`/profile/${profile.profile_id}`} className="profile-link">View Profile</Link>
+                                {isAuthenticated && hasProfile ? (
+                                    <Link to={`/profile/${profile.profile_id}`} className="profile-link">View Profile</Link>
+                                ) : (
+                                    <p>You need to be authenticated and have a profile to view this profile.</p>
+                                )}
                             </div>
                         </div>
                     ))}

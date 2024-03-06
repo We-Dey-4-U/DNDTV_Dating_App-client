@@ -15,9 +15,15 @@ const AuthForm = ({ onSubmit, isRegister }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit(formData);
+    const response = await onSubmit(formData); // Submit registration data to backend
+    if (response && response.token) {
+      // If token is received in response, store it in local storage
+      localStorage.setItem('token', response.token);
+      // Redirect the user to the profile page or any other desired page
+      // Example: window.location.href = '/profile';
+    }
   };
 
   return (
