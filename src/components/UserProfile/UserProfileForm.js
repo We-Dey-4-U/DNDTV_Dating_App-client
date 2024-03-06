@@ -75,7 +75,7 @@ const UserProfileForm = () => {
   return (
     <div>
       <div style={styles.container}>
-        <h2 style={styles.title}>User Profile Form</h2>
+        <h2 style={styles.title}>DNDTV User Profile Form</h2>
         <div style={styles.previewContainer}>
           {formData.profilePicturePreview && (
             <img src={formData.profilePicturePreview} alt="Profile Preview" style={styles.previewImage} />
@@ -161,18 +161,19 @@ const UserProfileForm = () => {
           </button>
         </form>
       </div>
-      <div style={styles.userDetailsContainer}>
-        <h2 style={styles.title}>User Details</h2>
-        <div style={styles.userDetails}>
-          {/* Display user details */}
-        </div>
-      </div>
+      
     </div>
   );
 };
 
 
 const styles = {
+  body: {
+    backgroundColor: '#0047ab', 
+    margin: 0, // Reset default body margin
+    padding: 0, // Reset default body padding
+  },
+ 
   container: {
     maxWidth: '600px',
     margin: '0 auto',
@@ -180,6 +181,9 @@ const styles = {
     border: '1px solid #ccc',
     borderRadius: '5px',
     marginBottom: '20px',
+    backgroundColor: '#000080', 
+    color: 'white', 
+    
   },
   userDetailsContainer: {
     maxWidth: '600px',
@@ -191,6 +195,7 @@ const styles = {
   title: {
     textAlign: 'center',
     marginBottom: '20px',
+    color: '#FFD700',
   },
   previewContainer: {
     display: 'flex',

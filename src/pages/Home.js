@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'; // Import Axios for making HTTP requests
 import Footer from '../components/Footer'; // Import the Footer component
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 //import UserProfilesPage from '../page/UserProfilesPage/UserProfilesPage'; // Import the UserProfilesPage component
 
 
@@ -88,18 +91,50 @@ const Home = () => {
      
      
      
-     
-     
-     
-      {/* Hero Section */}
-      <section className="hero-section" style={{backgroundImage: `url('https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/424972151_1581326085984637_4511065845559482280_n.jpg?stp=dst-jpg_p526x296&_nc_cat=102&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=lmY-M5Qvfa8AX8te8fB&_nc_ht=scontent-los2-1.xx&oh=00_AfDah9GF_YrMkZLIoimOAhbL5U4VbnKGF1Qk1LWjNIPLhg&oe=65E19C27')`}}>
-      <div className="hero-content">
-        <h1>Welcome to Our Dating App</h1>
-        <p>Find Your Perfect Match Today</p>
-        {/* Link to the UserProfilesPage */}
-        <Link to="/user-profile" className="cta-button">Create Your Profile</Link>
-      </div>
-    </section>
+      {/* Hero Section with Carousel */}
+      <section className="hero-section">
+                <Slider
+                    dots={true} // Show dots for navigation
+                    infinite={true} // Enable infinite loop
+                    autoplay={true} // Enable autoplay
+                    autoplaySpeed={3000} // Set autoplay speed in milliseconds
+                >
+                    <div>
+                        <div className="hero-content" style={{backgroundImage: `url('https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/431141368_1584710072312905_5630675893205957809_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=l9Tqh-2nbV8AX9kjEfM&_nc_ht=scontent-los2-1.xx&oh=00_AfAJfgq1qhc0PtE5dYa7jJ5TSQa5-pQgH2relDPPdtHSSQ&oe=65EDE316')`}}>
+                        <h1>Welcome to Our Dating App</h1>
+                         <p>Find Your Perfect Match Today</p>
+                          <Link to="/user-profile" className="cta-button">Create Your Profile</Link>
+                            {/* Hero content goes here */}
+                        </div>
+                    </div>
+                    <div>
+                        <div className="hero-content" style={{backgroundImage: `url('https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/424972151_1581326085984637_4511065845559482280_n.jpg?stp=dst-jpg_p526x296&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=TD134IbE_ZoAX-d45VG&_nc_ht=scontent-los2-1.xx&oh=00_AfDuZJoru9uJmFdVlNpNFoSF5PXyRlYAzly-3mUW1aJB5A&oe=65ED79A7')`}}>
+                        <h1>Welcome to Our Dating App</h1>
+                         <p>Find Your Perfect Match Today</p>
+                          <Link to="/user-profile" className="cta-button">Create Your Profile</Link>
+                            {/* Hero content goes here */}
+                        </div>
+                    </div>
+                    <div>
+                        <div className="hero-content" style={{backgroundImage: `url('https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/428622421_1580550486062197_2514201611042213047_n.jpg?stp=dst-jpg_p526x296&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Y7Bth_4f2vgAX-qnkya&_nc_oc=AQlqAP9Yho12IMCJSbaR_00uTdFa7ev9qaRaYyNYZUG-9WukcfhUyNhrDyFCDX-K6-E&_nc_ht=scontent-los2-1.xx&oh=00_AfBCtFE2O4os2iddg_j8w7MakyVQEOIQuajzYYMjq2EoqQ&oe=65ED6A4F')`}}>
+                        <h1>Welcome to Our Dating App</h1>
+                         <p>Find Your Perfect Match Today</p>
+                          <Link to="/user-profile" className="cta-button">Create Your Profile</Link>
+                            {/* Hero content goes here */}
+                        </div>
+                    </div>
+                    <div>
+                        <div className="hero-content" style={{backgroundImage: `url('https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/424890722_1578424622941450_1629852040445734649_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=QtRk0zFyJ8QAX9Am3xn&_nc_ht=scontent-los2-1.xx&oh=00_AfDq39ltNYLjf6cZs3PAhrjknSDk4rq1LrBbeA-u4bEpag&oe=65EC8829')`}}>
+                        <h1>Welcome to Our Dating App</h1>
+                         <p>Find Your Perfect Match Today</p>
+                          <Link to="/user-profile" className="cta-button">Create Your Profile</Link>
+                            {/* Hero content goes here */}
+                        </div>
+                    </div>
+                    {/* Add more slides as needed */}
+                </Slider>
+            </section>
+
 
       
 

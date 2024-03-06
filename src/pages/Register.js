@@ -23,7 +23,7 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <h2>Register</h2>
+      <h2>DNDTV Register</h2>
       {successMessage && <p className="success-message">{successMessage}</p>}
       <AuthForm onSubmit={handleRegister} isRegister={true} />
       <p className="login-link-container">Already registered? <Link to="/login" className="login-link">Login here</Link></p>

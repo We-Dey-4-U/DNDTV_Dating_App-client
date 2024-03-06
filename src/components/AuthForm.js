@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '../pages/Login.css';
+import '../pages/Register.css';
 
 const AuthForm = ({ onSubmit, isRegister }) => {
   const [formData, setFormData] = useState({
@@ -69,6 +71,8 @@ const styles = {
   label: {
     display: 'block',
     marginBottom: '5px',
+    color: '#fff !important',
+    
   },
   input: {
     width: '100%',

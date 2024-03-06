@@ -27,12 +27,14 @@ const Login = ({ setAuthenticated }) => {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+      <h2>DNDTV Login</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <AuthForm onSubmit={handleLogin} isRegister={false} />
       <p className="link-container">Not registered yet? <Link to="/register" className="register-link">Register here</Link></p>
     </div>
   );
 };
+
+
 
 export default Login;

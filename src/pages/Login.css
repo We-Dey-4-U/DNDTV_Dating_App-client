@@ -3,7 +3,21 @@
 .login-container {
     max-width: 400px;
     margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #000080; /* Navy Blue */
+    
   }
+
+  .login-container h2 {
+    color: #ffd700; /* Golden */
+  }
+  
+  .login-link-container {
+    color: white;
+  }
+ 
   
   .link-container {
     margin-top: 20px;
@@ -17,4 +31,35 @@
   
   .register-link:hover {
     text-decoration: underline;
+  }
+
+
+  .form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    color: white !important;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }

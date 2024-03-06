@@ -3,11 +3,19 @@
 .register-container {
     max-width: 400px;
     margin: 0 auto;
+    background-color: #000080;
   }
+
+  .register-container h2 {
+    color: #ffd700; /* Golden */
+  }
+
+  
   
   .link-container {
     margin-top: 20px;
     font-size: 14px;
+    color: white;
   }
   
   .login-link {
@@ -17,4 +25,11 @@
   
   .login-link:hover {
     text-decoration: underline;
+  }
+
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    color: white !important;
   }
